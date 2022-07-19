@@ -1,5 +1,5 @@
-const express = require('express');
-const fetch = require("node-fetch");
+const express = require('express'); // latest
+const fetch = require("node-fetch"); // 2.1.0
 
 const app = express();
 
@@ -7,7 +7,7 @@ var data = {};
 
 function updateDB() {
   let id = (Math.random() * 715267356) + 500;
-  
+}
 updateDB()
 
 setInterval(updateDB, 500000);
