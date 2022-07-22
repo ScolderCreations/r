@@ -1,0 +1,19 @@
+body {
+  font-weight: bolder;
+  font-family: 'Segoe UI', 'Roboto', 'Fira Sans', system-ui;
+}
+
+h1.gameTitle {
+  font-weight: 850;
+  size: 150%;
+  margin-left: 10px;
+}
+
+rating {
+  content-align: center;
+  text-align: center;
+  letter-spacing: 2%;
+  padding: 10px;
+  font-weight: 900;
+  font-size: 175%;
+}
