@@ -18,6 +18,21 @@ header {
   padding-left: 10px;
   position: sticky;
   top: 0px;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: -5px;
+}
+
+h3 {
+  display: inline-block;
+  color: !important white;
+}
+
+div.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 h1.gameTitle {
@@ -42,10 +57,90 @@ rating {
 
 card {
   display: inline-block;
-  background-color: darkblue;
+  background-color: orange;
   padding: 25px;
+  margin-left: 25%;
+  margin-right: 25%;
+  border-radius: 50px;
+  text-align: center;
+  justify-content: center;
+}
+
+card.main {
+  display: block;
+  position: sticky;
+  top: 60px;
+  width: 100%;
+  border-radius: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+card.image {
+  width: 100%;
+  border-radius: 0px;
+  margin-bottom: -1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0%;
+}
+
+img {
+  border-radius: 50px;
 }
 
 a, a:visited {
-  color: orange;
+  color: black;
+}
+
+review {
+  display: block;
+}
+
+username {
+  padding: 10px;
+  font-size: 16pt;
+}
+
+userscore {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
+
+quote {
+  display: block;
+  padding: 20px;
+  background-color: #191919;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 30pt;
+  margin-left: 20pt;
+  padding: 5px;
+}
+
+al {
+  display: block;
+  justify-content: left;
+  text-align: left;
+}
+
+b {
+  font-weight: 1000;
+}
+
+i {
+  font-decoration: italic;
+}
+
+u {
+  font-decoration: underline;
+}
+
+s {
+  font-decoration: middle;
 }
