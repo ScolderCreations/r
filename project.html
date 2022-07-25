@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SPRB - %PROJECT</title>
-  <link href="style.css" rel=stylesheet />
+  <title>SPRB - %TITLE</title>
+  <link href="../style.css" rel=stylesheet />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="See reviews for %TITLE.">
 </head>
 <body>
-<header><h1>Scratch Project Review Board</h1></header>
-
-<h1 class=gameTitle>Chirpy Reverie</h1>
-<rating><span style="color: green">90</span>/100</rating>
+<div class=container>
+  <header><h1>Scratch Project Review Board</h1> <h3><a href="/">Home</a></h3></header>
+</div>
+<card class="image"><img src='https://cdn2.scratch.mit.edu/get_image/project/%ID_480x360.png' height="80%" width="80%"/></card>
+<div class=container>
+  <card class="main">
+  <h1 class=gameTitle>%TITLE</h1>
+  <h2>Created by <a href="https://scratch.mit.edu/users/%AUTHOR">%AUTHOR</a></h2>
+  <h2>Released %DATE</h2>
+  <h2>Description:</h2>
+  <al>%DESC</al>
+<rating>
+  <span style="color: green">%RATING</span> / 100
+</rating>
+  (view project on <a href="https://scratch.mit.edu/projects/%ID">Scratch</a>)
+</card>
+</div>
+<br />
+<h4>Reviews</h4>
+%REVIEWS
 </body>
 </html>
