@@ -1,10 +1,19 @@
 const express = require('express');   // latest
 const fetch = require("node-fetch"); // 2.1.0
 const fs = require('fs');           // builtin
+var RateLimit = require('express-rate-limit');
 
 const app = express();
 
 const root = "/home/runner/r/"
+
+var limiter = new RateLimit({
+  windowMs: 1*60*1000, // 1 minute
+  max: 50
+});
+
+// apply rate limiter to all requests
+app.use(limiter);
 
 app.get(['/', /\/index.?h?t?m?l?/], (req, res) => {
   res.sendFile('index.html', {root: root})
