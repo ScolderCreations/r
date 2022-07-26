@@ -1,7 +1,7 @@
-const express = require('express');   // latest
-const fetch = require("node-fetch"); // 2.1.0
-const fs = require('fs');           // builtin
-var RateLimit = require('express-rate-limit');
+const express = require('express');               // latest
+const fetch = require("node-fetch");             // 2.1.0
+const fs = require('fs');                       // builtin
+var RateLimit = require('express-rate-limit'); // latest
 
 function getProject(id) {
   return JSON.parse(fs.readFileSync('projects.json'))[id]
@@ -49,7 +49,7 @@ function projectPage(id) {
 
 const app = express();
 
-const root = "/home/runner/r/"
+const root = "/home/runner/r/";
 
 app.get(['/', /\/index.?h?t?m?l?/], (req, res) => {
   res.send(String(fs.readFileSync('index.html')).replace('<CRCOUNT />', String(JSON.parse(fs.readFileSync('projects.json'))[434825906]['reviews'].length)))
