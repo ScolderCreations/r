@@ -1,7 +1,7 @@
 const express = require('express');               // latest
 const fetch = require("node-fetch");             // 2.1.0
 const fs = require('fs');                       // builtin
-var RateLimit = require('express-rate-limit'); // latest
+var rateLimit = require('express-rate-limit'); // latest
 
 function getProject(id) {
   return JSON.parse(fs.readFileSync('projects.json'))[id]
@@ -72,6 +72,15 @@ function sortByRating(a, b) {
 const app = express();
 
 const root = "/home/runner/r/";
+
+const limiter = rateLimit({
+  windowMs: 5 * 60 * 1000, // 15 minutes
+	max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+
+app.use(limiter)
 
 app.get(['/', /\/index.?h?t?m?l?/], (req, res) => {
   res.send(String(fs.readFileSync('index.html')).replace('<CRCOUNT />', String(JSON.parse(fs.readFileSync('projects.json'))[434825906]['reviews'].length)))
