@@ -21,11 +21,20 @@ function renderReview(review) {
   return html + '</review>'
 }
 
-function renderProjects(projects) {
-  return projects.map(
+function renderProjects(a) {
+  return a.map(
     (project) => {
       let html = "<div class=container>";
-      html += ""
+      html += `<img src='https://cdn2.scratch.mit.edu/get_image/project/${project.id}_480x360.png' height='67%' width='100%' style='max-width: 480px; max-height: 360px;' />`
+      html += `</div><div class=container>
+                 <h1 class=gameTitle>${project.title}</h1>
+               </div>`
+      html += `<div class=container>
+               <card>
+                (see <a href="/projects/${project.id}">${project.reviews} reviews</a>) (view on <a href="https://scratch.mit.edu/projects/${project.id}">Scratch</a>)
+               </card>
+               </div>`
+      return html;
     }).join("<br />");
 }
 
@@ -75,6 +84,29 @@ app.get(/api\/[0-9]+\/count/, (req, res) => {
   res.send(String(JSON.parse(fs.readFileSync('projects.json'))[req.path.match(/[0-9]+/)[0]]['reviews'].length))
 });
 
+app.get(["/explore", "/all", /projects\/?/], (req, res) => {
+  let projectsFile = JSON.parse(fs.readFileSync('projects.json'));
+  res.send(`<!DOCTYPE html>
+<html>
+<head>
+  <title>SPRB - Explore</title>
+  <link href="../style.css" rel=stylesheet />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore reviews for Scratch Projects.">
+</head>
+<body>
+<div class=container>
+  <header><h1>Scratch Project Review Board</h1> <h3><a href="/">Home</a></h3></header>
+</div><br />${renderProjects(Object.keys(projectsFile).slice(0, 25).map((id) => {
+    let obj = Object();
+    obj.id = id;
+    obj.reviews = projectsFile[id].reviews.length;
+    obj.title = projectsFile[id].name;
+    return obj;
+  }))}`)
+});
+
 app.listen(3000, () => {
   console.log('server started');
 });
+
