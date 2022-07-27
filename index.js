@@ -21,6 +21,14 @@ function renderReview(review) {
   return html + '</review>'
 }
 
+function renderProjects(projects) {
+  return projects.map(
+    (project) => {
+      let html = "<div class=container>";
+      html += ""
+    }).join("<br />");
+}
+
 function getScore(array) {
   let scores = [];
   var score;
@@ -29,22 +37,22 @@ function getScore(array) {
   })
   if (scores.length > 0) {
     score = Math.floor(scores.reduce((partialSum, a) => partialSum + a, 0) / (scores.length))
-  } else {score = "N/A"}
+  } else { score = "N/A" }
   return score;
 }
 
 function projectPage(id) {
   let dat = getProject(id);
   return String(fs.readFileSync('project.html'))
-  .replaceAll('%ID', id)
-  .replaceAll('%TITLE', dat.name)
-  .replaceAll('%AUTHOR', dat.creator)
-  .replace('%DESC', dat.description.replaceAll("\n", "<br />").replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, "<a href='$1' target='_blank'>$1</a>"))
-  .replaceAll('%DATE', 
-    new Date(Date.parse(dat.released)).toString().replace(' ', ', ')
-  )
-  .replaceAll('%RATING', `<span style="color: ${getScore(dat.reviews) > 75 ? 'green' : (getScore(dat.reviews) > 45 ? 'yellow' : (getScore(dat.reviews).isNaN() ? 'white' : 'red'))};">` + getScore(dat.reviews) + '</span>')
-  .replace('%REVIEWS', dat.reviews.map(renderReview).join(''))
+    .replaceAll('%ID', id)
+    .replaceAll('%TITLE', dat.name)
+    .replaceAll('%AUTHOR', dat.creator)
+    .replace('%DESC', dat.description.replaceAll("\n", "<br />").replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, "<a href='$1' target='_blank'>$1</a>"))
+    .replaceAll('%DATE',
+      new Date(Date.parse(dat.released)).toString().replace(' ', ', ')
+    )
+    .replaceAll('%RATING', `<span style="color: ${getScore(dat.reviews) > 75 ? 'green' : (getScore(dat.reviews) > 45 ? 'yellow' : (typeof getScore(dat.reviews) != "number") ? 'white' : 'red')};">` + getScore(dat.reviews) + '</span>')
+    .replace('%REVIEWS', dat.reviews.map(renderReview).join(''))
 }
 
 const app = express();
@@ -56,7 +64,7 @@ app.get(['/', /\/index.?h?t?m?l?/], (req, res) => {
 });
 
 app.get('/style.css', (req, res) => {
-  res.sendFile('style.css', {root: root})
+  res.sendFile('style.css', { root: root })
 });
 
 app.get([/\/p\/[0-9]+/, /\/projects?\/[0-9]+/], (req, res) => {

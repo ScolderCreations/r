@@ -7,9 +7,18 @@
     "reviews": [
       ["epic reviewer", 90, "epic game, also this is a test lol\n\nits just fun to play, the music is a bop and the atmosphere is pretty good"],
       ["genshin impact player", 20, "i cant get past pink legvel !1!1!"],
-      ["gigabytechad", 85, "ignore the guy above me they're [b]dum[/b]"],
-      ["Mr. Hippo", 87, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\na"],
+      ["gigabytechad", 100, "ignore the guy above me they're [b]dum[/b]"],
+      ["Mr. Hippo", 90, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\na"],
       ["mel from teh emiji mobie!", 50, "meh"]
+    ]
+  },
+  "1": {
+    "name": "Example Project",
+    "creator": "N/A",
+    "description": "Example project",
+    "released": "1999-04-01T00:00:00.000Z",
+    "reviews": [
+      
     ]
   }
 }

@@ -59,14 +59,13 @@ rating {
 card {
   display: inline-block;
   background-color: orange;
-  padding: 25px;
-  margin-left: 25%;
-  margin-right: 25%;
+  padding: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
   border-radius: 50px;
   text-align: center;
   justify-content: center;
   justify-self: center;
-  width: 70%;
 }
 
 card.main {
