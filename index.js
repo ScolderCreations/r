@@ -65,8 +65,7 @@ function projectPage(id) {
 }
 
 function sortByRating(a, b) {
-  if (a == "N/A") return  1;
-  if (b == "N/A") return -1;
+  if ([a, b].includes("N/A")) return (a == "N/A") - (b == "N/A");
   return b - a;
 }
 
