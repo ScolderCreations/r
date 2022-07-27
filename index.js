@@ -64,6 +64,12 @@ function projectPage(id) {
     .replace('%REVIEWS', dat.reviews.map(renderReview).join(''))
 }
 
+function sortByRating(a, b) {
+  if (a == "N/A") return  1;
+  if (b == "N/A") return -1;
+  return b - a;
+}
+
 const app = express();
 
 const root = "/home/runner/r/";
@@ -102,8 +108,9 @@ app.get(["/explore", "/all", /projects\/?/], (req, res) => {
     obj.id = id;
     obj.reviews = projectsFile[id].reviews.length;
     obj.title = projectsFile[id].name;
+    obj.rating = getScore(projectsFile[id].reviews);
     return obj;
-  }))}`)
+  }).sort(sortByRating))}`)
 });
 
 app.listen(3000, () => {
